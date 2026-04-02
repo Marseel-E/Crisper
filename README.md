@@ -6,25 +6,26 @@ A Modular CLI that offers AI & Math based Video Upscaling.
 
 # Features
 
-- AI upscalers utilizing `RealESRGAN`.
-- Custom Metal PyTorch engine.
-- Math upscalers (GPU computed).
-  - Aspect Ratio tool, converts all resolutions to 16:9, adding black box padding.
-- Smart resolution targeting. (480p to 720p, 720p to 1080p, etc.) [Max 4k]
-- Uncapped 2X, 3X, and 4X upscaling.
-- Swarm tools. (Ability to split a file down 2, 4, or 6 times and compute them simultaneously. This shortens total compute time but increases compute load substantially.)
-- Ability to run multiple instances, of the same or different file, using the same or different upscaler. (Including `Swarm` mode)
-- Supports ALL video formats that `ffmpeg` supports. (Always outputs to `.mp4`)
-- Multi-platform support. Should work on MacOS, Windows, and Linux. (Only tested on Mac)
+- Custom PyTorch + MPS Engine: A highly optimized "Zero-PNG" RAM-piping architecture built specifically to exploit Apple Silicon (Metal Performance Shaders) without SSD I/O bottlenecks.
+- Dynamic AI Model Support: Seamlessly ingest and use any open-source .pth or .safetensors upscaling models (e.g., RealESRGAN, Nomos, OmniSR, RealCUGAN) with auto-scaling detection.
+- Swarm Deployment Protocol: Drastically slash compute times by splitting video files and processing them concurrently across 2, 4, or 6 background terminal nodes.
+- Smart Resolution Targeting: Auto-detects input dimensions and intelligently bumps to the next standard broadcast resolution (480p > 720p > 1080p, up to 4K), alongside uncapped strict multipliers (2x, 3x, 4x).
+- Hardware-Accelerated Math Scaling: Fast, non-AI mathematical scaling (Lanczos) via FFmpeg, plus a dedicated 16:9 Letterbox tool to enforce standard aspect ratios with black padding.
+- Concurrent Execution: Fully isolated workspaces allow you to run multiple instances of Crisper (or deploy multiple Swarms) on different files simultaneously without collision.
+- Universal Format Support: Ingests any video format supported by FFmpeg and standardizes the upscaled output to .mp4.
 
-- ~~Dynamic Tensor Caching~~ (Optimization)
+#### Planned Optimizations:
 
-- ~~Native GUI Application~~ (Soon.)
+- Dynamic Tensor Caching: Pre-allocating memory buffers in the tile-processing loop to prevent OS garbage collection and speed up Apple Silicon execution.
+- Smart Frame Interpolation: Halving upscaler workloads by processing at 30fps and using AI motion-interpolation to smoothly hallucinate back to 60fps upon compilation.
 
-- ~~Frame Interpolation Plugin~~ (Maybe.)
-- ~~Face Detail Restoration~~ (Maybe.)
-- ~~Audio Enhancements: Noise Reduction & Voice Isolation~~ (Maybe.)
-- ~~Image upscaling~~ (Maybe.)
+#### Future Ideas:
+
+- Native GUI Application
+- Frame Interpolation Plugin (RIFE / 60fps conversion)
+- Face Detail Restoration (CodeFormer / GFPGAN integration)
+- Audio Enhancements (Noise reduction & voice isolation)
+- Image Upscaling Mode (Optimized pipeline for massive static canvases and manga)
 
 # How To Use
 
