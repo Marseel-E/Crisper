@@ -1,0 +1,16 @@
+# CLI tools
+rich==14.3.3
+questionary==2.1.1
+
+# Development Tools
+black==26.3.1
+pre-commit==4.5.1
+
+# PyTorch + MPS Plugin
+spandrel==0.4.2
+Pillow==12.1.1
+torch==2.11.0
+torchvision==0.26.0
+
+# CoreML Plugin (Broken) [Python<=3.11]
+# coremltools==9.0
