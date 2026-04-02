@@ -115,6 +115,15 @@ The different upscalers, whether AI or Math all live inside a `plugins/` directo
   - Creating a batching system that feeds it 512x512 pixel chunks of each frame escalates compute time to hours compared to minutes on other models so that was scrapped as well.
   - Basically useless, but still a good learn.
 
+#### Recommended models:
+
+_(tested on real video, not anime)_
+
+- [realesr-animevideov3.pth](https://github.com/xinntao/Real-ESRGAN/releases/tag/v0.2.5.0) **(Balanced & Smoother)** 3.34s / 1m 5.85s `[benchmark]`
+- [realesr-general-wdn-x4v3.pth](https://github.com/xinntao/Real-ESRGAN/releases/tag/v0.2.5.0) **(More detailed, Less smooth)** 4.97s / 1m 41.73s `[1.5x slower, tiny optimized model]`
+- [NCNN_Anime](https://github.com/xinntao/Real-ESRGAN/releases/tag/v0.2.5.0) **(Balanced)** 6.28s / 1m 48.37s `[1.7x slower, may vary based on your hardware I/O speeds]`
+- [Real_CUGAN_4x.pth](https://huggingface.co/smnorini/Real_CUGAN_4x/tree/main) **(Balanced & Detailed)** 8.23s / 2m 52.99s `[2.6x slower, heavier model]`
+
 # License
 
 MIT License. [(view)](/LICENSE)
